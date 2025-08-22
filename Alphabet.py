@@ -19,7 +19,7 @@ def forward_pass(x,w1,w2):
         then the output of the hidden layer we make as an input of the output layer with <outputh,w2> then apply sigmoid and we have our output
     """
     z1=x.dot(w1) # input of first layer
-    a1=sigmoid(z1) #output of first layer
+    a1=np.tanh(z1) #output of first layer
     z2=a1.dot(w2) # input of output layer
     a2=sigmoid(z2)  # output of output layer
     return a2
@@ -35,7 +35,7 @@ def back_prop(x,y,lr,w1,w2):
         d1 : error at  hidder 
     """
     z1=x.dot(w1) 
-    a1=sigmoid(z1)
+    a1=np.tanh(z1)
     z2=a1.dot(w2)
     a2=sigmoid(z2)
     d2=np.multiply((a2-y),deriv_sigmoid(z2))
